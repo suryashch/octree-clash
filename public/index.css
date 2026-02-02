@@ -1,0 +1,170 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "Arial", sans-serif;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+canvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
+
+#controls {
+    position: fixed;  /* Changed from absolute to fixed */
+    bottom: 20px;
+    left: 20px;
+    background: rgba(38, 40, 55, 0.85);  /* Dark background matching your scene */
+    backdrop-filter: blur(10px);  /* Adds a nice blur effect */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    min-width: 250px;
+    z-index: 100;  /* Ensures it's on top */
+}
+
+.slider-group {
+    margin-bottom: 15px;
+}
+
+.slider-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff;  /* White text for dark background */
+}
+
+.slider-group input[type="range"] {
+    width: 100%;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.slider-group .value {
+    color: #3FDCFB;  /* Using your cyan color from the colorMap */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+h1 {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    margin: 0;
+    padding: 15px 30px;
+    background: rgba(38, 40, 55, 0.85);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: 600;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    z-index: 100;
+    letter-spacing: 1px;
+    border-left: 4px solid #3FDCFB;  /* Accent border using your cyan color */
+}
+
+h2 {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    margin: 0;
+    padding: 15px 30px;
+    background: rgba(38, 40, 55, 0.85);
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 600;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    z-index: 100;
+    letter-spacing: 1px;
+    border-left: 4px solid #3FDCFB;  /* Accent border using your cyan color */
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-size: 18px;
+    border-bottom: 2px solid #3FDCFB;
+    padding-bottom: 8px;
+}
+
+/* Style the range slider itself */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #3FDCFB;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #3FDCFB;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.2);
+}
+
+#social-links {
+    position: fixed;  /* Changed from absolute to fixed */
+    bottom: 20px;
+    right: 20px;
+    background: rgba(38, 40, 55, 0.85);  /* Dark background matching your scene */
+    padding: 20px;
+    border-radius: 12px;
+    z-index: 100;  /* Ensures it's on top */
+}
+
+#social-links hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 15px;
+}
+
+.link-group {
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+}
+
+.link-group a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.0rem;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.link-group a:hover {
+    color: #3FDCFB;
+    text-shadow: 0 0 8px rgba(63, 220, 251, 0.6);
+    transform: scale(1.02);
+}

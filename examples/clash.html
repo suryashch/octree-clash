@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>suryashch/octree</title>
+
+        <link rel="stylesheet" href="../public/index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+        <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+        <script type="importmap">
+            {
+                "imports":{
+                    "three":"https://unpkg.com/three@v0.153.0/build/three.module.js",
+                    "three/addons/": "https://unpkg.com/three@v0.153.0/examples/jsm/"
+                }
+            }
+        </script>
+    </head>
+<body>
+  <div id="heading">
+    <h1>Octree</h1>
+    <div class="border">
+        <div id="controls">
+        <h3>Mesh Position</h3>
+        <div class="slider-group">
+            <label for="x-slider">X: <span class="value" id="x-value">3.0</span></label>
+            <input type="range" id="x-slider" min="0" max="8" step="0.1" value="3">
+        </div>
+        <div class="slider-group">
+            <label for="y-slider">Y: <span class="value" id="y-value">3.0</span></label>
+            <input type="range" id="y-slider" min="0" max="8" step="0.1" value="3">
+        </div>
+        <div class="slider-group">
+            <label for="z-slider">Z: <span class="value" id="z-value">3.0</span></label>
+            <input type="range" id="z-slider" min="0" max="8" step="0.1" value="3">
+        </div>
+        <div class="slider-group">
+            <label for="r-slider">R: <span class="value" id="r-value">0.5</span></label>
+            <input type="range" id="r-slider" min="0.5" max="2" step="0.1" value="0.5">
+        </div>
+    </div>
+    </div>
+     <div class="border">
+        <div id="social-links">
+            <hr> <div class="link-group">
+                <a href="https://github.com/suryashch/octree/blob/main/reports/octree.md" target="_blank" rel="noopener">What is an Octree?</a>
+                <a href="https://github.com/suryashch/octree" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+        </div>
+        </div>
+
+    </div>
+  </div>
+  <script type="module" src="../scripts/clash.js"></script>
+</body>
+</html>

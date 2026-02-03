@@ -19,16 +19,22 @@ const state = {
     mesh_pos: [3,3,3]
 };
 
+const count = 10
+const ot_dimensions = 8
+const ot_depth = 4
+
 // const perfMonitor = new PerformanceMonitor()
 
-let input_bounds = [0,8,8,0,0,8];
+let input_bounds = [0,ot_dimensions,ot_dimensions,0,0,ot_dimensions];
+let final_bounds = null
+
 let mesh = null;
 
 const { scene, camera, renderer, controls } = createScene();
+const ot = makeOctree(input_bounds, ot_depth);
 
 const visualizer = new OctreeVisualizer(colorMap);
 scene.add(visualizer.group);
-const ot = makeOctree(input_bounds, 5);
 
 document.body.appendChild(renderer.domElement);
 
@@ -50,29 +56,32 @@ loader_2.load('human-foot.glb', (gltf) => {
 
     gltf.scene.traverse((child) => {
         if (child.isMesh){
-            const mesh_obj = new THREE.InstancedMesh(child.geometry, new THREE.MeshBasicMaterial(), 5);
+            const mesh_obj = new THREE.InstancedMesh(child.geometry, new THREE.MeshStandardMaterial(), count);
             scene.add(mesh_obj);
 
             const matrix = new THREE.Matrix4();
-            for (let i = 0; i < 5; i++){
+            for (let i = 0; i < count; i++){
                 matrix.setPosition(
-                    Math.round(Math.random() * 8),
-                    Math.round(Math.random() * 8),
-                    Math.round(Math.random() * 8)
+                    Math.round(Math.random() * ot_dimensions),
+                    Math.round(Math.random() * ot_dimensions),
+                    Math.round(Math.random() * ot_dimensions)
                 );
                 mesh_obj.setMatrixAt(i, matrix);
             }
             mesh_obj.instanceMatrix.needsUpdate = true;
+            console.log(mesh_obj);
         }
     })
 })
 
-visualizer.update(state.mesh_pos, ot, state.radius);
+final_bounds = visualizer.update(state.mesh_pos, ot, state.radius);
 
 initControls(state.mesh_pos, state, () => {
-    visualizer.update(state.mesh_pos, ot, state.radius);
+    final_bounds = visualizer.update(state.mesh_pos, ot, state.radius);
     if (mesh) mesh.position.fromArray(state.mesh_pos);
 });
+
+console.log(final_bounds)
 
 function animate() {
     requestAnimationFrame(animate);

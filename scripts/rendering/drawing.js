@@ -7,6 +7,7 @@ const unitEdges = new THREE.EdgesGeometry(unitBox);
 export class OctreeVisualizer {
     constructor(colorMap) {
         this.group = new THREE.Group();
+
         this.materials = Object.keys(colorMap).reduce((acc, level) => {
             acc[level] = new THREE.LineBasicMaterial({ color: colorMap[level] });
             return acc;
@@ -14,8 +15,10 @@ export class OctreeVisualizer {
     }
 
     update(pos, node, threshold) {
+        this.final_bounds = [];
         this.clear();
         this._drawRecursive(pos, node, threshold, 0);
+        return this.final_bounds;
     }
 
     clear() {
@@ -35,6 +38,11 @@ export class OctreeVisualizer {
         line.scale.set(w, h, d);
         line.position.set(xl + w/2, yb + h/2, zf + d/2);
         this.group.add(line);
+
+        if (node.children === null){
+            this.final_bounds.push(node.bounds);
+            return
+        }
 
         for (const child of node.children) {
             this._drawRecursive(pos, child, threshold, level + 1);

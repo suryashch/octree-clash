@@ -1,15 +1,17 @@
 export function makeOctree(bounds, depth) {
-    if (depth === 0) return null;
+    const node = {
+        bounds,
+        children: null
+    };
+
+    if (depth === 0) return node;
 
     const [x_l, x_r, y_t, y_b, z_f, z_b] = bounds;
     const midX = (x_l + x_r) / 2;
     const midY = (y_t + y_b) / 2;
     const midZ = (z_f + z_b) / 2;
 
-    const node = {
-        bounds,
-        children: []
-    };
+    node.children = [];
 
     const childBounds = [
         [x_l, midX, midY, y_b, z_f, midZ], [midX, x_r, midY, y_b, z_f, midZ],
